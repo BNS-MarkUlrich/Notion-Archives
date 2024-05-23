@@ -1,0 +1,677 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Meetings</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-transparentGray { background-color: rgba(227, 226, 224, 0); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="e845ccf9-46a6-422b-aad0-e8dce92d12f9" class="page sans"><header><div class="page-header-icon undefined"><img class="icon" src="https://www.notion.so/icons/meeting_lightgray.svg"/></div><h1 class="page-title">Meetings</h1><p class="page-description"></p></header><div class="page-body"><table class="collection-content"><thead><tr><th><span class="icon property-icon"><svg role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" class="typesTitle"><path d="M0.637695 13.1914C1.0957 13.1914 1.32812 13 1.47852 12.5215L2.24414 10.3887H6.14746L6.90625 12.5215C7.05664 13 7.2959 13.1914 7.74707 13.1914C8.22559 13.1914 8.5332 12.9043 8.5332 12.4531C8.5332 12.2891 8.50586 12.1523 8.44434 11.9678L5.41602 3.79199C5.2041 3.21777 4.82129 2.9375 4.19922 2.9375C3.60449 2.9375 3.21484 3.21777 3.0166 3.78516L-0.0322266 12.002C-0.09375 12.1797 -0.121094 12.3232 -0.121094 12.4668C-0.121094 12.918 0.166016 13.1914 0.637695 13.1914ZM2.63379 9.12402L4.17871 4.68066H4.21973L5.76465 9.12402H2.63379ZM12.2793 13.2324C13.3115 13.2324 14.2891 12.6787 14.7129 11.8037H14.7402V12.5762C14.7471 12.9863 15.0273 13.2393 15.4238 13.2393C15.834 13.2393 16.1143 12.9795 16.1143 12.5215V8.00977C16.1143 6.49902 14.9658 5.52148 13.1543 5.52148C11.7666 5.52148 10.6592 6.08887 10.2695 6.99121C10.1943 7.15527 10.1533 7.3125 10.1533 7.46289C10.1533 7.81152 10.4062 8.04395 10.7686 8.04395C11.0215 8.04395 11.2129 7.94824 11.3496 7.73633C11.7529 6.99121 12.2861 6.65625 13.1064 6.65625C14.0977 6.65625 14.6992 7.20996 14.6992 8.1123V8.67285L12.5664 8.7959C10.7686 8.8916 9.77734 9.69824 9.77734 11.0107C9.77734 12.3369 10.8096 13.2324 12.2793 13.2324ZM12.6621 12.1387C11.8008 12.1387 11.2129 11.667 11.2129 10.9561C11.2129 10.2725 11.7598 9.82129 12.7578 9.75977L14.6992 9.62988V10.3203C14.6992 11.3457 13.7969 12.1387 12.6621 12.1387Z"></path></svg></span>Name</th><th><span class="icon property-icon"><svg role="graphics-symbol" viewBox="0 0 16 16" style="width:14px;height:14px;display:block;fill:rgba(55, 53, 47, 0.45);flex-shrink:0" class="typesCreatedAt"><path d="M8 15.126C11.8623 15.126 15.0615 11.9336 15.0615 8.06445C15.0615 4.20215 11.8623 1.00293 7.99316 1.00293C4.13086 1.00293 0.938477 4.20215 0.938477 8.06445C0.938477 11.9336 4.1377 15.126 8 15.126ZM8 13.7383C4.85547 13.7383 2.33301 11.209 2.33301 8.06445C2.33301 4.91992 4.84863 2.39746 7.99316 2.39746C11.1377 2.39746 13.6738 4.91992 13.6738 8.06445C13.6738 11.209 11.1445 13.7383 8 13.7383ZM4.54102 8.91211H7.99316C8.30078 8.91211 8.54004 8.67285 8.54004 8.37207V3.8877C8.54004 3.58691 8.30078 3.34766 7.99316 3.34766C7.69238 3.34766 7.45312 3.58691 7.45312 3.8877V7.83203H4.54102C4.2334 7.83203 4.00098 8.06445 4.00098 8.37207C4.00098 8.67285 4.2334 8.91211 4.54102 8.91211Z"></path></svg></span>Created</th></tr></thead><tbody><tr id="86f35ab0-0a05-4993-ac63-2e9bde9200bd"><td class="cell-title"><a href="Meetings%20e845ccf946a6422baad0e8dce92d12f9/Stand%20Up%2086f35ab00a054993ac632e9bde9200bd.html"><img class="icon" src="https://www.notion.so/icons/sunrise_orange.svg"/>Stand Up</a></td><td class="cell-BUzx"><time>@May 23, 2024 9:30 AM</time></td></tr><tr id="61eac695-629b-450e-8929-b611446d46c8"><td class="cell-title"><a href="Meetings%20e845ccf946a6422baad0e8dce92d12f9/Stand%20Down%2061eac695629b450e8929b611446d46c8.html"><img class="icon" src="https://www.notion.so/icons/sunset_purple.svg"/>Stand Down</a></td><td class="cell-BUzx"><time>@May 21, 2024 3:40 PM</time></td></tr><tr id="146b3904-9eb1-4648-8c0e-a1f467d3e398"><td class="cell-title"><a href="Meetings%20e845ccf946a6422baad0e8dce92d12f9/Stand%20Up%20146b39049eb146488c0ea1f467d3e398.html"><img class="icon" src="https://www.notion.so/icons/sunrise_orange.svg"/>Stand Up</a></td><td class="cell-BUzx"><time>@May 21, 2024 7:48 AM</time></td></tr><tr id="33905b86-a812-4f50-988a-4f0c9d5ef3a7"><td class="cell-title"><a href="Meetings%20e845ccf946a6422baad0e8dce92d12f9/Stand%20Down%2033905b86a8124f50988a4f0c9d5ef3a7.html"><img class="icon" src="https://www.notion.so/icons/sunset_purple.svg"/>Stand Down</a></td><td class="cell-BUzx"><time>@May 17, 2024 3:33 PM</time></td></tr><tr id="8a8ddaeb-287b-4f9d-b53f-3b6ede596b80"><td class="cell-title"><a href="Meetings%20e845ccf946a6422baad0e8dce92d12f9/Stand%20Up%208a8ddaeb287b4f9db53f3b6ede596b80.html"><img class="icon" src="https://www.notion.so/icons/sunrise_orange.svg"/>Stand Up</a></td><td class="cell-BUzx"><time>@May 17, 2024 9:30 AM</time></td></tr><tr id="c2b32f40-c2c9-4ff9-b3b1-18451c55d01c"><td class="cell-title"><a href="Meetings%20e845ccf946a6422baad0e8dce92d12f9/Stand%20Down%20c2b32f40c2c94ff9b3b118451c55d01c.html"><img class="icon" src="https://www.notion.so/icons/sunset_purple.svg"/>Stand Down</a></td><td class="cell-BUzx"><time>@May 16, 2024 3:25 PM</time></td></tr><tr id="d493001f-9b22-425b-bd42-43b5f0f6e6bd"><td class="cell-title"><a href="Meetings%20e845ccf946a6422baad0e8dce92d12f9/Stand%20Up%20d493001f9b22425bbd4243b5f0f6e6bd.html"><img class="icon" src="https://www.notion.so/icons/sunrise_orange.svg"/>Stand Up</a></td><td class="cell-BUzx"><time>@May 16, 2024 9:00 AM</time></td></tr><tr id="afa79a4f-4cbb-4750-84fd-3dd7a60258fa"><td class="cell-title"><a href="Meetings%20e845ccf946a6422baad0e8dce92d12f9/Stand%20Down%20afa79a4f4cbb475084fd3dd7a60258fa.html"><img class="icon" src="https://www.notion.so/icons/sunset_purple.svg"/>Stand Down</a></td><td class="cell-BUzx"><time>@May 14, 2024 3:40 PM</time></td></tr><tr id="81a5410e-a0cb-4554-8451-b8e374c98c57"><td class="cell-title"><a href="Meetings%20e845ccf946a6422baad0e8dce92d12f9/Stand%20Up%2081a5410ea0cb45548451b8e374c98c57.html"><img class="icon" src="https://www.notion.so/icons/sunrise_orange.svg"/>Stand Up</a></td><td class="cell-BUzx"><time>@May 14, 2024 9:31 AM</time></td></tr><tr id="22a40ce4-ccbe-4d9a-89b0-17ce3b377bba"><td class="cell-title"><a href="Meetings%20e845ccf946a6422baad0e8dce92d12f9/Stand%20Down%2022a40ce4ccbe4d9a89b017ce3b377bba.html"><img class="icon" src="https://www.notion.so/icons/sunset_purple.svg"/>Stand Down</a></td><td class="cell-BUzx"><time>@May 13, 2024 3:45 PM</time></td></tr><tr id="bc821749-4e85-46f7-90aa-6939e84bf122"><td class="cell-title"><a href="Meetings%20e845ccf946a6422baad0e8dce92d12f9/Stand%20Up%20bc8217494e8546f790aa6939e84bf122.html"><img class="icon" src="https://www.notion.so/icons/sunrise_orange.svg"/>Stand Up</a></td><td class="cell-BUzx"><time>@May 13, 2024 9:31 AM</time></td></tr><tr id="955f5400-f7c8-4985-873b-8f0e8a06ee74"><td class="cell-title"><a href="Meetings%20e845ccf946a6422baad0e8dce92d12f9/Stand%20Down%20955f5400f7c84985873b8f0e8a06ee74.html"><img class="icon" src="https://www.notion.so/icons/sunset_purple.svg"/>Stand Down</a></td><td class="cell-BUzx"><time>@May 7, 2024 3:39 PM</time></td></tr><tr id="ea4209fd-b999-4d94-9998-f46d19162755"><td class="cell-title"><a href="Meetings%20e845ccf946a6422baad0e8dce92d12f9/Stand%20Up%20ea4209fdb9994d949998f46d19162755.html"><img class="icon" src="https://www.notion.so/icons/sunrise_orange.svg"/>Stand Up</a></td><td class="cell-BUzx"><time>@May 7, 2024 9:30 AM</time></td></tr><tr id="ddfeb1ec-3545-4b50-b3b5-446441f8dac8"><td class="cell-title"><a href="Meetings%20e845ccf946a6422baad0e8dce92d12f9/Stand%20Down%20ddfeb1ec35454b50b3b5446441f8dac8.html"><img class="icon" src="https://www.notion.so/icons/sunset_purple.svg"/>Stand Down</a></td><td class="cell-BUzx"><time>@May 6, 2024 3:44 PM</time></td></tr><tr id="c2fe2118-edaf-451a-9517-243330d47e52"><td class="cell-title"><a href="Meetings%20e845ccf946a6422baad0e8dce92d12f9/Stand%20Up%20c2fe2118edaf451a9517243330d47e52.html"><img class="icon" src="https://www.notion.so/icons/sunrise_orange.svg"/>Stand Up</a></td><td class="cell-BUzx"><time>@May 6, 2024 9:30 AM</time></td></tr><tr id="94a12d1b-852e-48a3-9eac-fc25cffeba92"><td class="cell-title"><a href="Meetings%20e845ccf946a6422baad0e8dce92d12f9/Sprint%203%20Planning%2094a12d1b852e48a39eacfc25cffeba92.html"><img class="icon" src="https://www.notion.so/icons/calendar-week_red.svg"/>Sprint 3 Planning</a></td><td class="cell-BUzx"><time>@April 26, 2024 2:04 PM</time></td></tr><tr id="6a6abd1b-537a-4e2a-81b1-87105d09074a"><td class="cell-title"><a href="Meetings%20e845ccf946a6422baad0e8dce92d12f9/Sprint%202%20Refinement%206a6abd1b537a4e2a81b187105d09074a.html"><img class="icon" src="https://www.notion.so/icons/gem_red.svg"/>Sprint 2 Refinement</a></td><td class="cell-BUzx"><time>@April 26, 2024 1:28 PM</time></td></tr><tr id="b17ed9d2-f960-4855-846c-70169c8c94a6"><td class="cell-title"><a href="Meetings%20e845ccf946a6422baad0e8dce92d12f9/Sprint%202%20Retrospective%20b17ed9d2f9604855846c70169c8c94a6.html"><img class="icon" src="https://www.notion.so/icons/search_red.svg"/>Sprint 2 Retrospective</a></td><td class="cell-BUzx"><time>@April 26, 2024 1:09 PM</time></td></tr><tr id="9d9e758c-8713-4e60-8f61-71cd08eec4f9"><td class="cell-title"><a href="Meetings%20e845ccf946a6422baad0e8dce92d12f9/Sprint%202%20Review%209d9e758c87134e608f6171cd08eec4f9.html"><img class="icon" src="https://www.notion.so/icons/run_red.svg"/>Sprint 2 Review</a></td><td class="cell-BUzx"><time>@April 26, 2024 9:49 AM</time></td></tr><tr id="0e66c39a-ae98-4ff7-9f51-92ae40c09369"><td class="cell-title"><a href="Meetings%20e845ccf946a6422baad0e8dce92d12f9/Stand%20Down%200e66c39aae984ff79f5192ae40c09369.html"><img class="icon" src="https://www.notion.so/icons/sunset_purple.svg"/>Stand Down</a></td><td class="cell-BUzx"><time>@April 25, 2024 3:12 PM</time></td></tr><tr id="eabbe768-3502-4500-ae47-4605be607be0"><td class="cell-title"><a href="Meetings%20e845ccf946a6422baad0e8dce92d12f9/Stand%20Up%20eabbe76835024500ae474605be607be0.html"><img class="icon" src="https://www.notion.so/icons/sunrise_orange.svg"/>Stand Up</a></td><td class="cell-BUzx"><time>@April 25, 2024 9:30 AM</time></td></tr><tr id="22a5886e-7505-4977-a6d7-252a194f485d"><td class="cell-title"><a href="Meetings%20e845ccf946a6422baad0e8dce92d12f9/Stand%20Down%2022a5886e75054977a6d7252a194f485d.html"><img class="icon" src="https://www.notion.so/icons/sunset_purple.svg"/>Stand Down</a></td><td class="cell-BUzx"><time>@April 23, 2024 3:44 PM</time></td></tr><tr id="bb2af60d-b701-4d47-a324-eb3752f498c7"><td class="cell-title"><a href="Meetings%20e845ccf946a6422baad0e8dce92d12f9/Stand%20Up%20bb2af60db7014d47a324eb3752f498c7.html"><img class="icon" src="https://www.notion.so/icons/sunrise_orange.svg"/>Stand Up</a></td><td class="cell-BUzx"><time>@April 23, 2024 9:32 AM</time></td></tr><tr id="8416156d-134e-4300-a11b-539442236ae2"><td class="cell-title"><a href="Meetings%20e845ccf946a6422baad0e8dce92d12f9/Stand%20Down%208416156d134e4300a11b539442236ae2.html"><img class="icon" src="https://www.notion.so/icons/sunset_purple.svg"/>Stand Down</a></td><td class="cell-BUzx"><time>@April 22, 2024 3:43 PM</time></td></tr><tr id="b0e5aea7-aee5-4484-ab07-560ba240fd1f"><td class="cell-title"><a href="Meetings%20e845ccf946a6422baad0e8dce92d12f9/Stand%20Up%20b0e5aea7aee54484ab07560ba240fd1f.html"><img class="icon" src="https://www.notion.so/icons/sunrise_orange.svg"/>Stand Up</a></td><td class="cell-BUzx"><time>@April 22, 2024 9:30 AM</time></td></tr><tr id="eb375d69-c9d6-435b-be41-244053dff4ca"><td class="cell-title"><a href="Meetings%20e845ccf946a6422baad0e8dce92d12f9/Stand%20Down%20eb375d69c9d6435bbe41244053dff4ca.html"><img class="icon" src="https://www.notion.so/icons/sunset_purple.svg"/>Stand Down</a></td><td class="cell-BUzx"><time>@April 19, 2024 3:40 PM</time></td></tr><tr id="f2d2833e-8083-4edf-ae96-9af08fc8ec2f"><td class="cell-title"><a href="Meetings%20e845ccf946a6422baad0e8dce92d12f9/Stand%20Up%20f2d2833e80834edfae969af08fc8ec2f.html"><img class="icon" src="https://www.notion.so/icons/sunrise_orange.svg"/>Stand Up</a></td><td class="cell-BUzx"><time>@April 19, 2024 9:30 AM</time></td></tr><tr id="670f13b6-36ea-4b27-a641-7f3487097af0"><td class="cell-title"><a href="Meetings%20e845ccf946a6422baad0e8dce92d12f9/Stand%20Down%20670f13b636ea4b27a6417f3487097af0.html"><img class="icon" src="https://www.notion.so/icons/sunset_purple.svg"/>Stand Down</a></td><td class="cell-BUzx"><time>@April 18, 2024 3:41 PM</time></td></tr><tr id="72d7ed9d-ca91-4b6a-a323-f1656a0eb390"><td class="cell-title"><a href="Meetings%20e845ccf946a6422baad0e8dce92d12f9/Stand%20Up%2072d7ed9dca914b6aa323f1656a0eb390.html"><img class="icon" src="https://www.notion.so/icons/sunrise_orange.svg"/>Stand Up</a></td><td class="cell-BUzx"><time>@April 18, 2024 9:31 AM</time></td></tr><tr id="6c40f383-7355-4ea8-a9b5-e69be637d0e5"><td class="cell-title"><a href="Meetings%20e845ccf946a6422baad0e8dce92d12f9/Stand%20Down%206c40f38373554ea8a9b5e69be637d0e5.html"><img class="icon" src="https://www.notion.so/icons/sunset_purple.svg"/>Stand Down</a></td><td class="cell-BUzx"><time>@April 16, 2024 3:36 PM</time></td></tr><tr id="04851955-e2c8-4dfe-bd7b-05094866c393"><td class="cell-title"><a href="Meetings%20e845ccf946a6422baad0e8dce92d12f9/Stand%20Up%2004851955e2c84dfebd7b05094866c393.html"><img class="icon" src="https://www.notion.so/icons/sunrise_orange.svg"/>Stand Up</a></td><td class="cell-BUzx"><time>@April 16, 2024 9:30 AM</time></td></tr><tr id="ff24f03d-058a-4c6f-b95b-10f4ee5a40c2"><td class="cell-title"><a href="Meetings%20e845ccf946a6422baad0e8dce92d12f9/Stand%20Down%20ff24f03d058a4c6fb95b10f4ee5a40c2.html"><img class="icon" src="https://www.notion.so/icons/sunset_purple.svg"/>Stand Down</a></td><td class="cell-BUzx"><time>@April 15, 2024 3:42 PM</time></td></tr><tr id="fb51110f-1c7a-4ab7-9781-b6226ad70307"><td class="cell-title"><a href="Meetings%20e845ccf946a6422baad0e8dce92d12f9/Stand%20Up%20fb51110f1c7a4ab79781b6226ad70307.html"><img class="icon" src="https://www.notion.so/icons/sunrise_orange.svg"/>Stand Up</a></td><td class="cell-BUzx"><time>@April 15, 2024 9:30 AM</time></td></tr><tr id="58e90f15-d97e-4c88-9782-7414dba16793"><td class="cell-title"><a href="Meetings%20e845ccf946a6422baad0e8dce92d12f9/Stand%20Down%2058e90f15d97e4c8897827414dba16793.html"><img class="icon" src="https://www.notion.so/icons/sunset_purple.svg"/>Stand Down</a></td><td class="cell-BUzx"><time>@April 12, 2024 2:36 PM</time></td></tr><tr id="ffaf2585-6ef3-4b88-ad5c-f70cc8a200fd"><td class="cell-title"><a href="Meetings%20e845ccf946a6422baad0e8dce92d12f9/Stand%20Up%20ffaf25856ef34b88ad5cf70cc8a200fd.html"><img class="icon" src="https://www.notion.so/icons/sunrise_orange.svg"/>Stand Up</a></td><td class="cell-BUzx"><time>@April 12, 2024 9:25 AM</time></td></tr><tr id="6ea41e51-be51-4957-a49d-55285f4c1425"><td class="cell-title"><a href="Meetings%20e845ccf946a6422baad0e8dce92d12f9/Stand%20Down%206ea41e51be514957a49d55285f4c1425.html"><img class="icon" src="https://www.notion.so/icons/sunset_purple.svg"/>Stand Down</a></td><td class="cell-BUzx"><time>@April 11, 2024 3:39 PM</time></td></tr><tr id="be3ac3a3-b88f-45c7-843f-ebbfd486ff75"><td class="cell-title"><a href="Meetings%20e845ccf946a6422baad0e8dce92d12f9/Co-op%20Design%20be3ac3a3b88f45c7843febbfd486ff75.html"><img class="icon" src="https://www.notion.so/icons/groups_blue.svg"/>Co-op Design</a></td><td class="cell-BUzx"><time>@April 11, 2024 10:00 AM</time></td></tr><tr id="859c68bc-c09c-4d76-b7bf-e4c6a86e8fc7"><td class="cell-title"><a href="Meetings%20e845ccf946a6422baad0e8dce92d12f9/Stand%20Up%20859c68bcc09c4d76b7bfe4c6a86e8fc7.html"><img class="icon" src="https://www.notion.so/icons/sunrise_orange.svg"/>Stand Up</a></td><td class="cell-BUzx"><time>@April 11, 2024 9:30 AM</time></td></tr><tr id="3a21dd3b-8816-4faf-8b76-c7bf1527c60c"><td class="cell-title"><a href="Meetings%20e845ccf946a6422baad0e8dce92d12f9/Stand%20Down%203a21dd3b88164faf8b76c7bf1527c60c.html"><img class="icon" src="https://www.notion.so/icons/sunset_purple.svg"/>Stand Down</a></td><td class="cell-BUzx"><time>@April 9, 2024 3:39 PM</time></td></tr><tr id="0c212b98-4c29-43aa-b94e-a68684b99910"><td class="cell-title"><a href="Meetings%20e845ccf946a6422baad0e8dce92d12f9/Communication%20Design%200c212b984c2943aab94ea68684b99910.html"><img class="icon" src="https://www.notion.so/icons/groups_blue.svg"/>Communication Design</a></td><td class="cell-BUzx"><time>@April 9, 2024 9:36 AM</time></td></tr><tr id="685f0321-a525-4ea5-bdfc-e54a898cd5f6"><td class="cell-title"><a href="Meetings%20e845ccf946a6422baad0e8dce92d12f9/Stand%20Up%20685f0321a5254ea5bdfce54a898cd5f6.html"><img class="icon" src="https://www.notion.so/icons/sunrise_orange.svg"/>Stand Up</a></td><td class="cell-BUzx"><time>@April 9, 2024 9:30 AM</time></td></tr><tr id="b5ab32f1-a771-40c8-b5c8-a904c0f89ab0"><td class="cell-title"><a href="Meetings%20e845ccf946a6422baad0e8dce92d12f9/Stand%20Down%20b5ab32f1a77140c8b5c8a904c0f89ab0.html"><img class="icon" src="https://www.notion.so/icons/sunset_purple.svg"/>Stand Down</a></td><td class="cell-BUzx"><time>@April 8, 2024 3:41 PM</time></td></tr><tr id="4136238e-3ee3-40a7-8231-956f52ec08d2"><td class="cell-title"><a href="Meetings%20e845ccf946a6422baad0e8dce92d12f9/Level%20Design%204136238e3ee340a78231956f52ec08d2.html"><img class="icon" src="https://www.notion.so/icons/groups_blue.svg"/>Level Design</a></td><td class="cell-BUzx"><time>@April 8, 2024 1:29 PM</time></td></tr><tr id="bd9db6dd-36f8-4018-9419-41872a379fb9"><td class="cell-title"><a href="Meetings%20e845ccf946a6422baad0e8dce92d12f9/Stand%20Up%20bd9db6dd36f84018941941872a379fb9.html"><img class="icon" src="https://www.notion.so/icons/sunrise_orange.svg"/>Stand Up</a></td><td class="cell-BUzx"><time>@April 8, 2024 9:33 AM</time></td></tr><tr id="8981772b-7613-4420-98c8-5c1ba5db2ad0"><td class="cell-title"><a href="Meetings%20e845ccf946a6422baad0e8dce92d12f9/Stand%20Down%208981772b7613442098c85c1ba5db2ad0.html"><img class="icon" src="https://www.notion.so/icons/sunset_purple.svg"/>Stand Down</a></td><td class="cell-BUzx"><time>@April 5, 2024 2:57 PM</time></td></tr><tr id="0d0da786-509e-4c02-9409-f70d4d396790"><td class="cell-title"><a href="Meetings%20e845ccf946a6422baad0e8dce92d12f9/Sprint%202%20Planning%200d0da786509e4c029409f70d4d396790.html"><img class="icon" src="https://www.notion.so/icons/calendar-week_red.svg"/>Sprint 2 Planning</a></td><td class="cell-BUzx"><time>@April 5, 2024 1:29 PM</time></td></tr><tr id="ac51aa88-f977-4d3b-8db7-c327af3b59fb"><td class="cell-title"><a href="Meetings%20e845ccf946a6422baad0e8dce92d12f9/Sprint%201%20Refinement%20ac51aa88f9774d3b8db7c327af3b59fb.html"><img class="icon" src="https://www.notion.so/icons/gem_red.svg"/>Sprint 1 Refinement</a></td><td class="cell-BUzx"><time>@April 5, 2024 12:53 PM</time></td></tr><tr id="5c46f4dd-f71b-4a6f-8884-9899c94d2ada"><td class="cell-title"><a href="Meetings%20e845ccf946a6422baad0e8dce92d12f9/Sprint%201%20Retrospective%205c46f4ddf71b4a6f88849899c94d2ada.html"><img class="icon" src="https://www.notion.so/icons/search_red.svg"/>Sprint 1 Retrospective</a></td><td class="cell-BUzx"><time>@April 5, 2024 11:03 AM</time></td></tr><tr id="e390c23c-60d5-42e2-ba33-f4c9ddc6a623"><td class="cell-title"><a href="Meetings%20e845ccf946a6422baad0e8dce92d12f9/Sprint%201%20Review%20e390c23c60d542e2ba33f4c9ddc6a623.html"><img class="icon" src="https://www.notion.so/icons/run_red.svg"/>Sprint 1 Review</a></td><td class="cell-BUzx"><time>@April 5, 2024 10:08 AM</time></td></tr><tr id="24f07656-4701-4e03-823c-2b3b389e3735"><td class="cell-title"><a href="Meetings%20e845ccf946a6422baad0e8dce92d12f9/Stand%20Down%2024f0765647014e03823c2b3b389e3735.html"><img class="icon" src="https://www.notion.so/icons/sunset_purple.svg"/>Stand Down</a></td><td class="cell-BUzx"><time>@April 4, 2024 3:42 PM</time></td></tr><tr id="e5b61236-67b0-4d5e-b2a6-999e7e67d7a0"><td class="cell-title"><a href="Meetings%20e845ccf946a6422baad0e8dce92d12f9/Stand%20Up%20e5b6123667b04d5eb2a6999e7e67d7a0.html"><img class="icon" src="https://www.notion.so/icons/sunrise_orange.svg"/>Stand Up</a></td><td class="cell-BUzx"><time>@April 4, 2024 9:30 AM</time></td></tr><tr id="eb3e346b-c0dc-4c00-8d97-9d3a567ef5b7"><td class="cell-title"><a href="Meetings%20e845ccf946a6422baad0e8dce92d12f9/Stand%20Down%20eb3e346bc0dc4c008d979d3a567ef5b7.html"><img class="icon" src="https://www.notion.so/icons/sunset_purple.svg"/>Stand Down</a></td><td class="cell-BUzx"><time>@April 2, 2024 3:37 PM</time></td></tr><tr id="0e952f78-95dd-4d3a-a105-86b5a02f8108"><td class="cell-title"><a href="Meetings%20e845ccf946a6422baad0e8dce92d12f9/Stand%20Up%200e952f7895dd4d3aa10586b5a02f8108.html"><img class="icon" src="https://www.notion.so/icons/sunrise_orange.svg"/>Stand Up</a></td><td class="cell-BUzx"><time>@April 2, 2024 3:35 PM</time></td></tr><tr id="d21a3ad3-88f3-4417-b746-e4d6bd1d27be"><td class="cell-title"><a href="Meetings%20e845ccf946a6422baad0e8dce92d12f9/Stand%20Down%20d21a3ad388f34417b746e4d6bd1d27be.html"><img class="icon" src="https://www.notion.so/icons/sunset_purple.svg"/>Stand Down</a></td><td class="cell-BUzx"><time>@March 28, 2024 3:45 PM</time></td></tr><tr id="3e2cd1da-a6ea-49d1-a8d9-7ef67b4c2cee"><td class="cell-title"><a href="Meetings%20e845ccf946a6422baad0e8dce92d12f9/Enemy,%20Structure%20Interaction%20Design%203e2cd1daa6ea49d1a8d97ef67b4c2cee.html"><img class="icon" src="https://www.notion.so/icons/groups_blue.svg"/>Enemy, Structure Interaction Design</a></td><td class="cell-BUzx"><time>@March 28, 2024 10:10 AM</time></td></tr><tr id="a5b74630-0f9f-4d1b-9345-e890791facba"><td class="cell-title"><a href="Meetings%20e845ccf946a6422baad0e8dce92d12f9/Stand%20Up%20a5b746300f9f4d1b9345e890791facba.html"><img class="icon" src="https://www.notion.so/icons/sunrise_orange.svg"/>Stand Up</a></td><td class="cell-BUzx"><time>@March 28, 2024 9:29 AM</time></td></tr><tr id="afbff283-edc4-4cc7-b11a-0994f1d6eae2"><td class="cell-title"><a href="Meetings%20e845ccf946a6422baad0e8dce92d12f9/Stand%20Down%20afbff283edc44cc7b11a0994f1d6eae2.html"><img class="icon" src="https://www.notion.so/icons/sunset_purple.svg"/>Stand Down</a></td><td class="cell-BUzx"><time>@March 26, 2024 3:43 PM</time></td></tr><tr id="69367e85-270e-4f42-8493-d15c03527113"><td class="cell-title"><a href="Meetings%20e845ccf946a6422baad0e8dce92d12f9/Structures%20Design%2069367e85270e4f428493d15c03527113.html"><img class="icon" src="https://www.notion.so/icons/groups_blue.svg"/>Structures Design </a></td><td class="cell-BUzx"><time>@March 26, 2024 9:45 AM</time></td></tr><tr id="6b47ba3b-bddb-4dd3-96a9-90d1d788b678"><td class="cell-title"><a href="Meetings%20e845ccf946a6422baad0e8dce92d12f9/Stand%20Down%206b47ba3bbddb4dd396a990d1d788b678.html"><img class="icon" src="https://www.notion.so/icons/sunset_purple.svg"/>Stand Down</a></td><td class="cell-BUzx"><time>@March 26, 2024 9:36 AM</time></td></tr><tr id="177a8c8a-d671-42e6-8f7d-7969e1d8ef25"><td class="cell-title"><a href="Meetings%20e845ccf946a6422baad0e8dce92d12f9/Stand%20Up%20177a8c8ad67142e68f7d7969e1d8ef25.html"><img class="icon" src="https://www.notion.so/icons/sunrise_orange.svg"/>Stand Up</a></td><td class="cell-BUzx"><time>@March 26, 2024 9:30 AM</time></td></tr><tr id="374e6ef6-9b8d-4c03-a234-80a7a0d79c02"><td class="cell-title"><a href="Meetings%20e845ccf946a6422baad0e8dce92d12f9/Player%20HP%20Design%20374e6ef69b8d4c03a23480a7a0d79c02.html"><img class="icon" src="https://www.notion.so/icons/groups_blue.svg"/>Player HP Design</a></td><td class="cell-BUzx"><time>@March 25, 2024 9:44 AM</time></td></tr><tr id="8549da2b-96a3-4ddc-936d-b44e5692da4e"><td class="cell-title"><a href="Meetings%20e845ccf946a6422baad0e8dce92d12f9/Stand%20Up%208549da2b96a34ddc936db44e5692da4e.html"><img class="icon" src="https://www.notion.so/icons/sunrise_orange.svg"/>Stand Up</a></td><td class="cell-BUzx"><time>@March 25, 2024 9:29 AM</time></td></tr><tr id="4baed38f-2151-4be7-8a22-4eafce1854c9"><td class="cell-title"><a href="Meetings%20e845ccf946a6422baad0e8dce92d12f9/Stand%20Down%204baed38f21514be78a224eafce1854c9.html"><img class="icon" src="https://www.notion.so/icons/sunset_purple.svg"/>Stand Down</a></td><td class="cell-BUzx"><time>@March 22, 2024 3:42 PM</time></td></tr><tr id="12006c25-a575-4f04-8bea-6b95bddb4f6b"><td class="cell-title"><a href="Meetings%20e845ccf946a6422baad0e8dce92d12f9/Stand%20Up%2012006c25a5754f048bea6b95bddb4f6b.html"><img class="icon" src="https://www.notion.so/icons/sunrise_orange.svg"/>Stand Up</a></td><td class="cell-BUzx"><time>@March 22, 2024 9:33 AM</time></td></tr><tr id="866a224e-7624-42b7-877b-a65737214ab5"><td class="cell-title"><a href="Meetings%20e845ccf946a6422baad0e8dce92d12f9/Stand%20Down%20866a224e762442b7877ba65737214ab5.html"><img class="icon" src="https://www.notion.so/icons/sunset_purple.svg"/>Stand Down</a></td><td class="cell-BUzx"><time>@March 21, 2024 3:43 PM</time></td></tr><tr id="cf1ae5d4-ed9d-4641-9444-3aac429e1928"><td class="cell-title"><a href="Meetings%20e845ccf946a6422baad0e8dce92d12f9/Sprint%201%20Planning%20cf1ae5d4ed9d464194443aac429e1928.html"><img class="icon" src="https://www.notion.so/icons/calendar-week_red.svg"/>Sprint 1 Planning</a></td><td class="cell-BUzx"><time>@March 21, 2024 9:16 AM</time></td></tr><tr id="2047f92c-494c-4e36-8cbb-80832df1aa2a"><td class="cell-title"><a href="Meetings%20e845ccf946a6422baad0e8dce92d12f9/Concept%20Inspirations%202047f92c494c4e368cbb80832df1aa2a.html"><img class="icon" src="https://www.notion.so/icons/groups_blue.svg"/>Concept Inspirations</a></td><td class="cell-BUzx"><time>@March 19, 2024 1:59 PM</time></td></tr><tr id="10ae073e-75d4-4c60-8126-500811f7407d"><td class="cell-title"><a href="Meetings%20e845ccf946a6422baad0e8dce92d12f9/Preliminary%20Concept%2010ae073e75d44c608126500811f7407d.html"><img class="icon" src="https://www.notion.so/icons/groups_blue.svg"/>Preliminary Concept</a></td><td class="cell-BUzx"><time>@March 19, 2024 11:46 AM</time></td></tr><tr id="45d8cf4a-0e71-4151-ac27-d1d55787beac"><td class="cell-title"><a href="Meetings%20e845ccf946a6422baad0e8dce92d12f9/Initial%20Pitch%20Reviews%2045d8cf4a0e714151ac27d1d55787beac.html"><img class="icon" src="https://www.notion.so/icons/groups_blue.svg"/>Initial Pitch Reviews</a></td><td class="cell-BUzx"><time>@March 18, 2024 11:13 AM</time></td></tr></tbody></table><br/><br/></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
