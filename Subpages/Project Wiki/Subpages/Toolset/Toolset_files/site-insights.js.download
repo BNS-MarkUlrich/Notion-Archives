@@ -1,4 +1,5 @@
 (function () {
+  var ip;
   var accountId;
   var visitorIdKey = "Metadata_visitor_id";
   var sessionIdKey = "Metadata_session_id";
@@ -57,27 +58,31 @@
     return sessionId;
   })();
 
+  function fetchIp() {
+    return fetch("https://api.ipify.org?format=json")
+      .then((r) => r.json())
+      .then((r) => {
+        ip = r.ip;
+      })
+      .catch((e) => {
+        console.error(e);
+      });
+  }
+
   function recordTraffic() {
     fetch(baseUrl + "/traffic", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
+        ip: ip,
         url: window.location.href,
         url_referrer: window.document.referrer,
         account_id: accountId,
         session_id: sessionId,
         visitor_id: visitorId
       })
-    });
-  }
-
-  function syncCookie() {
-    var pid =
-      "5de38576d91fe7ac65e01de48078379caf9e72e979b06a5762372b0c12e930ef";
-
-    fetch("https://a.usbrowserspeed.com/cs?pid=" + pid + "&puid=" + visitorId, {
-      mode: "no-cors",
-      credentials: "include"
+    }).catch((e) => {
+      console.error(e);
     });
   }
 
@@ -116,10 +121,10 @@
     window.addEventListener("click", throttle(prolongSession, 1000));
 
     if (!blacklistIds.includes(accountId)) {
-      recordTraffic();
+      fetchIp().finally(() => {
+        recordTraffic();
+      });
     }
-
-    syncCookie();
   }
 
   window.Metadata = window.Metadata || {};
